@@ -12,12 +12,14 @@ public class EnemyWeapon : MonoBehaviour
     private GameObject laserPrefab;
     [SerializeField]
     private Transform shotSpawn;
-    
+
     private float timeBetweenShots;
+    private AudioSource weaponSound;
 
     private void Start()
     {
         timeBetweenShots = Time.time;
+        weaponSound = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -33,6 +35,8 @@ public class EnemyWeapon : MonoBehaviour
     // Instantiates a laser bolt
     private void Fire()
     {
+        weaponSound.Play();
+
         Rigidbody laserBody = Instantiate(laserPrefab, shotSpawn.transform.position, shotSpawn.transform.rotation).
             GetComponent<Rigidbody>();
 
