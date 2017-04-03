@@ -13,6 +13,13 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField]
     private Transform shotSpawn;
 
+    private AudioSource weaponSound;
+
+    private void Start()
+    {
+        weaponSound = GetComponent<AudioSource>();
+    }
+
     private void Update()
     {
         // If Fire1 is pressed start firing
@@ -30,6 +37,8 @@ public class PlayerWeapon : MonoBehaviour
     // Instantiates a laser bolt
     private void Fire()
     {
+        weaponSound.Play();
+
         Rigidbody laserBody = Instantiate(laserPrefab, shotSpawn.transform.position, shotSpawn.transform.rotation).
             GetComponent<Rigidbody>();
 
