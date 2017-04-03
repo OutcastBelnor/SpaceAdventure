@@ -18,7 +18,7 @@ public class PlayerLaser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player") || other.CompareTag("GameSpace") || other.CompareTag("Heart"))
+        if (other.CompareTag("GameSpace"))
         {
             return;
         }

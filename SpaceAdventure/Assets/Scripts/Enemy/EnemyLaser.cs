@@ -16,21 +16,12 @@ public class EnemyLaser : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy") || other.CompareTag("GameSpace") || other.CompareTag("Heart"))
+        if (other.CompareTag("GameSpace"))
         {
             return;
         }
 
-        if (other.CompareTag("Player"))
-        {
-            playerHealth.UpdateHealth(-10.0f);
-        }
-        else
-        {
-            Instantiate(asteroidExplosion, other.transform.position, other.transform.rotation);
-            Destroy(other.gameObject);
-        }
-
+        playerHealth.UpdateHealth(-10.0f);
         Destroy(this.gameObject);
     }
 }
